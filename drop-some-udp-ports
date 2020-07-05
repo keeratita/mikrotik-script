@@ -1,0 +1,7 @@
+/ip firewall filter
+add chain=udp protocol=udp dst-port=69 action=drop comment="deny TFTP" 
+add chain=udp protocol=udp dst-port=111 action=drop comment="deny PRC portmapper" 
+add chain=udp protocol=udp dst-port=135 action=drop comment="deny PRC portmapper" 
+add chain=udp protocol=udp dst-port=137-139 action=drop comment="deny NBT" 
+add chain=udp protocol=udp dst-port=2049 action=drop comment="deny NFS" 
+add chain=udp protocol=udp dst-port=3133 action=drop comment="deny BackOriffice" 
