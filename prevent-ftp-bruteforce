@@ -1,0 +1,4 @@
+/ip firewall filter
+add chain=input protocol=tcp dst-port=21 src-address-list=ftp_blacklist action=drop \ comment="drop ftp brute forcers"
+add chain=output action=accept protocol=tcp content="530 Login incorrect" dst-limit=1/1m,9,dst-address/1m
+add chain=output action=add-dst-to-address-list protocol=tcp content="530 Login incorrect" \ address-list=ftp_blacklist address-list-timeout=3h
