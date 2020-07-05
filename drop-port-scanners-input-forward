@@ -1,0 +1,3 @@
+/ip firewall filter
+add chain=input src-address-list="port scanners" action=drop comment="dropping port scanners" disabled=no
+add chain=forward src-address-list="port scanners" action=drop comment="dropping port scanners" disabled=no
