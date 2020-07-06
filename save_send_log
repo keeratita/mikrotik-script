@@ -1,8 +1,10 @@
-source="
-:local body
+#read log
+:local logcontent
 :foreach int in=[/log find ] do={
-  :set body ("$body\r\n" . [/log get $int])
+:set logcontent ("$logcontent\r\n" .[/log get $int time]. " - " .[/log get $int message])
 }
-/tool e-mail send to="YOU@DOMAIN.COM" subject=([/system identity get name] . " Log " . [/system clock get date]) body=$body
+#send email
+/tool e-mail send to="log@xxxx.xxx" subject=([/system identity get name] . " Log " . [/system clock get date]) body=$logcontent
+#delete old log
 /system logging action set memory memory-lines=1
-/system logging action set memory memory-lines=100"
+/system logging action set memory memory-lines=65000
