@@ -1,0 +1,8 @@
+source="
+:local body
+:foreach int in=[/log find ] do={
+  :set body ("$body\r\n" . [/log get $int])
+}
+/tool e-mail send to="YOU@DOMAIN.COM" subject=([/system identity get name] . " Log " . [/system clock get date]) body=$body
+/system logging action set memory memory-lines=1
+/system logging action set memory memory-lines=100"
